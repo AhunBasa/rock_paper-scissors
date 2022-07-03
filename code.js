@@ -15,17 +15,7 @@ function computerPlay() {
 
 
 function getPlayerSelection() {
-  let playerSelection = prompt('Rock, Paper or Scissors&');
-  playerSelection =  playerSelection.toLowerCase();
-  let keepGoing = true;
-  while (keepGoing)
-  if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-    keepGoing = false;
-    return playerSelection;
-  } else {
-    playerSelection = prompt('Try again.');
-    playerSelection = playerSelection.toLowerCase();
-  }
+  
 }
 
 //let playerSelection = getPlayerSelection();

@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: rgb(240, 238, 235);
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex: 1 1 auto;
+  border: 1px solid black;
+}
+
+.choice {
+  height: 300px;
+  width: 200px;
+  border: 2px solid gray;
+  border-radius: 15px;
+
+}
+ 
