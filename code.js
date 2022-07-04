@@ -1,38 +1,35 @@
-//get computer's choice
-function computerPlay() {
-  const computerChoice = Math.floor(Math.random()*3);
-  if (computerChoice === 0) {
-    return 'Rock';
-  } else if (computerChoice === 1) {
-    return 'Paper';
-  } else {
-    return 'Scissors';
-  }
-}
+const choices = document.querySelectorAll('.playerChoice');
+const computerChoices = document.querySelectorAll('.computer .choice');
 
+  for (let i = 0; i < 3; i++) {
+    choices[i].addEventListener('mousedown', (e) => {
+    choices[i].classList.add('checked');
+    setTimeout(getComputerSelection, 500);
+    let j = getComputerSelection();
+    setTimeout(playRound, 1000);
+    console.log(playRound(i, j));
+    })
+  }
+
+//get computer's choice
+
+function getComputerSelection() {
+  const i = Math.floor(Math.random()*3);
+  computerChoices[i].classList.add('checked'); 
+  return i;
+}
 
 //get user's choice
 
-
-function getPlayerSelection() {
-  
-}
-
-//let playerSelection = getPlayerSelection();
-
-//Capitalize playerSelection
-function capitalize(playerSelection) {
-let firstLetter = playerSelection.charAt(0);
-firstLetter = firstLetter.toUpperCase();
-return playerSelection = firstLetter + playerSelection.slice(1, playerSelection.length);
-}
-
 //determine a winner in 1 round and record a score
 let playerScore = 0;
-let computerScore =0;
+let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === 'Rock' && computerSelection === 'Paper' || playerSelection === 'Paper' && computerSelection === 'Scissors' || playerSelection === 'Scissors' && computerSelection === 'Rock') {
+  const rock = 0;
+  const paper = 1;
+  const scissors = 2;
+  if (playerSelection === rock && computerSelection === paper || playerSelection === paper && computerSelection === scissors || playerSelection === scissors && computerSelection === rock) {
     computerScore++;
     return `You lose! ${computerSelection} beats ${playerSelection}.`;
   } else if (playerSelection === computerSelection) {
@@ -41,10 +38,11 @@ function playRound(playerSelection, computerSelection) {
     playerScore++;
     return `You won! ${playerSelection} beats ${computerSelection}`;
   }
+
 }
 
-//console.log(playRound(playerSelection, computerSelection));
-
+// console.log(playRound(getPlayerSelection(), getComputerSelection()));
+// //
 //function plays game 5 times, record a score and declares a winner
 
 function game() {
@@ -54,18 +52,5 @@ function game() {
     console.log(playRound(playerSelection, computerPlay()));
   }
 }
-game();
-
-//print the result
-if (playerScore > computerScore) {
-  console.log('You won!')
-} else if (playerScore < computerScore) {
-  console.log('You lost!')
-} else {
-  console.log('Game is a tie.')
-}
-console.log(`Player score: ${playerScore}, computer score: ${computerScore}`);
-
-
 
 
