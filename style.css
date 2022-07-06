@@ -1,60 +1,90 @@
 * {
   margin: 0;
   padding: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   /* border: 1px solid gray; */
 }
 
 .container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: rgb(240, 238, 235);
-}
-
-h1 {
-  text-align: center;
-  padding: 10px;
-  font-size: 50px;
-  font-family: 'Courier New', Courier, monospace;
-} 
-
-.computer, .player {
-  flex-grow: 1;
-  background-color: rgb(230, 228, 228);
+  background-color: rgb(204, 218, 215);
+  color: rgb(116, 106, 106); 
 }
 
 .section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
+  flex-direction: column;
   flex: 1 1 auto;
- 
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color:  */
+
 }
 
-.choice {
+.subsection {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.card {
+  height: 300px;
+  width: 200px;
+  border: 2px solid rgb(116, 106, 106);
+  background-color: rgb(230, 238, 245);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 260px;
-  width: 200px;
-  border: 2px solid rgb(61, 56, 56);;
-  border-radius: 15px;
-  color:rgb(61, 56, 56);
-  background-color: rgb(200, 196, 196);
+  justify-content: center;
+  gap: 20px;
 }
-
-.choice p {
-  font-size: 30px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+p {
+  font-size: 2em;
   font-weight: bold;
-  margin-top: 20px;
-}
- 
-.playerChoice:hover {
-  border-color: yellow;
 }
 
-.checked {
-  background-color: rgb(154, 85, 85);
+header, footer {
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 1em;
+  padding: 20px;
+  margin-bottom: -10px;
+}
+
+footer {
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.computer {
+  color: blue; 
+}
+
+.computer .card {
+  border-color: blue;
+}
+
+.player {
+  color: green;
+}
+
+.player .card {
+  border-color: green;
+}
+
+#selected {
+  border-color: goldenrod;
+  box-shadow: 5px 5px 3px goldenrod;
+  transform: scale(1.02);
+}
+
+.player .card:hover {
+  border-color: goldenrod;
+  box-shadow: 5px 5px 3px goldenrod;
+  transform: scale(1.02);
 }
