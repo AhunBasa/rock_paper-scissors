@@ -2,32 +2,30 @@ let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 
-function playRound(playerSelection) {
+function playGame(playerSelection) {
   let computerSelection = getComputerSelection();
   const rock = 0;
   const paper = 1;
   const scissors = 2;
+  
   if (playerSelection === rock && computerSelection === paper || playerSelection === paper && computerSelection === scissors || playerSelection === scissors && computerSelection === rock) {
     computerScore++;
     console.log(playerScore, computerScore);
-    //return;
   } else if (playerSelection === computerSelection) {
     console.log(playerScore, computerScore);
-  //return;
   } else {
     playerScore++;
     console.log(playerScore, computerScore);
-   // return;
   }
-
   
   setTimeout((deselect), 2000, computerSelection, playerSelection);
   displayCurrentScore();
   
-  if (playerScore === 2 || computerScore === 2) {
+  if (playerScore === 3 || computerScore === 3) {
     setTimeout((announceWinner), 2002);
     return;
   }
+
   select();
 };
 
@@ -42,8 +40,6 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const computerCards = document.querySelectorAll('.computer .card');
 const playerCards = document.querySelectorAll('.player .card');
-//const output = document.getElementById('output');
-
 
 function select() {
   rock.addEventListener('click', selectRock);
@@ -55,22 +51,24 @@ function selectRock() {
   rock.setAttribute('id', 'selected');
   removeListener();
   toggleTurnComputer();
-  setTimeout(playRound, 2000, 0);
+  setTimeout(playGame, 2000, 0);
 }
 
 function selectPaper() {
   paper.setAttribute('id', 'selected');
   removeListener();
   toggleTurnComputer();
-  setTimeout(playRound, 2000, 1);
+  setTimeout(playGame, 2000, 1);
 }
 
 function selectScissors() {
   scissors.setAttribute('id', 'selected');
   removeListener();
   toggleTurnComputer();
-  setTimeout(playRound, 2000, 2);
+  setTimeout(playGame, 2000, 2);
 }
+
+select();
 
 function removeListener() {
   rock.removeEventListener('click', selectRock);
@@ -101,18 +99,19 @@ function displayCurrentScore() {
   document.getElementById('playerScore').textContent = `Score: ${playerScore}`;
 } 
 
-select();
-
 const middle = document.querySelector('.middle');
 
 const button = document.createElement('button');
 button.textContent = 'Play again';
-let playAgain = middle.appendChild(button);
-playAgain.addEventListener('click', () => {
+middle.appendChild(button);
+
+button.addEventListener('click', () => {
   playerScore = 0;
   computerScore = 0;
   displayCurrentScore();
   select();
+  button.style.display = 'none';
+  toggleTurnPlayer();
 });
 
 function announceWinner() {
@@ -121,4 +120,5 @@ function announceWinner() {
   } else {
     output.textContent = "Computer won!";
   }
+  button.style.display = 'block';
 } 
